@@ -5,11 +5,11 @@ namespace Modules\Product\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 
-class Product extends Model
+class Detail extends Model
 {
 
     protected $fillable = [];
-    protected $table = "product";
+    protected $table = "product_detail";
 
     /**
      * List of fields for managing postings.
