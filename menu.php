@@ -5,7 +5,7 @@ $this->add_module_info("products", [
     'description' => 'Products',
     'icon' => 'fas fa-store',
     'path' => '/products',
-    'class_str' => 'text-secondary border-secondary'
+    'class_str' => 'text-green-800 border-green-800'
 ]);
 
 
