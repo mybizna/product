@@ -2,8 +2,10 @@
 
 namespace Modules\Product\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
+use Modules\Base\Entities\BaseModel;
+use Modules\Core\Classes\Views\FormBuilder;
+use Modules\Core\Classes\Views\ListTable;
 
 class Product extends BaseModel
 {
@@ -12,6 +14,54 @@ class Product extends BaseModel
     public $migrationDependancy = [];
     protected $table = "product";
 
+    public function listTable()
+    {
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('name')->type('text')->ordering(true);
+        $fields->name('product_type_id')->type('text')->ordering(true);
+        $fields->name('category_id')->type('text')->ordering(true);
+        $fields->name('tax_cat_id')->type('text')->ordering(true);
+        $fields->name('vendor')->type('text')->ordering(true);
+        $fields->name('cost_price')->type('text')->ordering(true);
+        $fields->name('sale_price')->type('text')->ordering(true);
+
+        return $fields;
+
+    }
+
+    public function formBuilder()
+    {
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('name')->type('text')->group('w-1/2');
+        $fields->name('product_type_id')->type('text')->group('w-1/2');
+        $fields->name('category_id')->type('text')->group('w-1/2');
+        $fields->name('tax_cat_id')->type('text')->group('w-1/2');
+        $fields->name('vendor')->type('text')->group('w-1/2');
+        $fields->name('cost_price')->type('text')->group('w-1/2');
+        $fields->name('sale_price')->type('text')->group('w-1/2');
+
+        return $fields;
+
+    }
+
+    public function filter()
+    {
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('name')->type('text')->group('w-1/6');
+        $fields->name('product_type_id')->type('text')->group('w-1/6');
+        $fields->name('category_id')->type('text')->group('w-1/6');
+        $fields->name('tax_cat_id')->type('text')->group('w-1/6');
+        $fields->name('vendor')->type('text')->group('w-1/6');
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *
