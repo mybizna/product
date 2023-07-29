@@ -1,5 +1,7 @@
 <?php
 
+/** @var \Modules\Base\Classes\Fetch\Rights $this */
+
 $this->add_right("product", "category", "administrator", view:true, add:true, edit:true, delete:true);
 $this->add_right("product", "category", "manager", view:true, add:true, edit:true, delete:true);
 $this->add_right("product", "category", "supervisor", view:true, add:true, edit:true, delete:true);
