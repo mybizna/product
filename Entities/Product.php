@@ -42,7 +42,7 @@ class Product extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
         
@@ -54,5 +54,18 @@ class Product extends BaseModel
         $this->fields->integer('vendor')->nullable()->html('text');
         $this->fields->decimal('cost_price', 20, 2)->default(0.00)->html('amount');
         $this->fields->decimal('sale_price', 20, 2)->default(0.00)->html('amount');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['name', 'product_type_id', 'category_id', 'tax_cat_id', 'vendor', 'cost_price', 'sale_price'],
+            'filter' => ['name', 'product_type_id', 'category_id', 'tax_cat_id'],
+        ];
+
+        return $structure;
     }
 }

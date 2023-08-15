@@ -44,7 +44,7 @@ class Detail extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
         
@@ -53,5 +53,18 @@ class Detail extends BaseModel
         $this->fields->integer('trn_no')->nullable()->html('text');
         $this->fields->integer('stock_in')->nullable()->html('text');
         $this->fields->integer('stock_out')->nullable()->html('text');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['product_id', 'trn_no', 'stock_in', 'stock_out'],
+            'filter' => ['product_id', 'trn_no', ],
+        ];
+
+        return $structure;
     }
 }
