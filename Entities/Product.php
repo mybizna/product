@@ -45,7 +45,7 @@ class Product extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('name')->nullable()->html('text');
         $this->fields->integer('product_type_id')->nullable()->html('text');
@@ -61,8 +61,14 @@ class Product extends BaseModel
      */
     public function structure($structure): array
     {
+
         $structure = [
             'table' => ['name', 'product_type_id', 'category_id', 'tax_cat_id', 'vendor', 'cost_price', 'sale_price'],
+            'form' => [
+                ['label' => 'Name', 'class' => 'w-full', 'fields' => ['name']],
+                ['label' => 'Product', 'class' => 'w-1/2', 'fields' => ['product_type_id', 'category_id', 'tax_cat_id']],
+                ['label' => 'Setting', 'class' => 'w-1/2', 'fields' => ['vendor', 'cost_price', 'sale_price']],
+            ],
             'filter' => ['name', 'product_type_id', 'category_id', 'tax_cat_id'],
         ];
 
