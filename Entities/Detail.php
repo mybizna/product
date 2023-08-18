@@ -3,8 +3,6 @@
 namespace Modules\Product\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Views\FormBuilder;
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
 
 class Detail extends BaseModel
@@ -47,7 +45,7 @@ class Detail extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id');
         $this->fields->integer('product_id')->nullable()->html('text');
         $this->fields->integer('trn_no')->nullable()->html('text');
@@ -60,10 +58,8 @@ class Detail extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['product_id', 'trn_no', 'stock_in', 'stock_out'],
-            'filter' => ['product_id', 'trn_no', ],
-        ];
+        $structure['table'] = ['product_id', 'trn_no', 'stock_in', 'stock_out'];
+        $structure['filter'] = ['product_id', 'trn_no'];
 
         return $structure;
     }

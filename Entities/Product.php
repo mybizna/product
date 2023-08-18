@@ -62,15 +62,13 @@ class Product extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['name', 'product_type_id', 'category_id', 'tax_cat_id', 'vendor', 'cost_price', 'sale_price'],
-            'form' => [
-                ['label' => 'Name', 'class' => 'w-full', 'fields' => ['name']],
-                ['label' => 'Product', 'class' => 'w-1/2', 'fields' => ['product_type_id', 'category_id', 'tax_cat_id']],
-                ['label' => 'Setting', 'class' => 'w-1/2', 'fields' => ['vendor', 'cost_price', 'sale_price']],
-            ],
-            'filter' => ['name', 'product_type_id', 'category_id', 'tax_cat_id'],
+        $structure['table'] = ['name', 'product_type_id', 'category_id', 'tax_cat_id', 'vendor', 'cost_price', 'sale_price'];
+        $structure['form'] = [
+            ['label' => 'Name', 'class' => 'col-span-full', 'fields' => ['name']],
+            ['label' => 'Product', 'class' => 'col-span-6', 'fields' => ['product_type_id', 'category_id', 'tax_cat_id']],
+            ['label' => 'Setting', 'class' => 'col-span-6', 'fields' => ['vendor', 'cost_price', 'sale_price']],
         ];
+        $structure['filter'] = ['name', 'product_type_id', 'category_id', 'tax_cat_id'];
 
         return $structure;
     }
