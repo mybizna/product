@@ -46,7 +46,7 @@ class Product extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
-        $this->fields->increments('id')->html('text');
+        $this->fields->increments('id')->html('hidden');
         $this->fields->string('name')->nullable()->html('text');
         $this->fields->integer('product_type_id')->nullable()->html('text');
         $this->fields->integer('category_id')->nullable()->html('text');
