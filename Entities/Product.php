@@ -64,9 +64,9 @@ class Product extends BaseModel
 
         $structure['table'] = ['name', 'product_type_id', 'category_id', 'tax_cat_id', 'vendor', 'cost_price', 'sale_price'];
         $structure['form'] = [
-            ['label' => 'Name', 'class' => 'col-span-full', 'fields' => ['name']],
-            ['label' => 'Product', 'class' => 'col-span-full md:col-span-6ull md:col-span-6ull  md:col-span-6 md:pr-2', 'fields' => ['product_type_id', 'category_id', 'tax_cat_id']],
-            ['label' => 'Setting', 'class' => 'col-span-full md:col-span-6ull  md:col-span-6 md:pr-2', 'fields' => ['vendor', 'cost_price', 'sale_price']],
+            ['label' => 'Product Name', 'class' => 'col-span-full', 'fields' => ['name']],
+            ['label' => 'Product Detail', 'class' => 'col-span-full md:col-span-6ull md:col-span-6ull  md:col-span-6 md:pr-2', 'fields' => ['product_type_id', 'category_id', 'tax_cat_id']],
+            ['label' => 'Other Product Setting ', 'class' => 'col-span-full md:col-span-6ull  md:col-span-6 md:pr-2', 'fields' => ['vendor', 'cost_price', 'sale_price']],
         ];
         $structure['filter'] = ['name', 'product_type_id', 'category_id', 'tax_cat_id'];
 
