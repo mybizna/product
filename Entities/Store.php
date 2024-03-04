@@ -5,7 +5,7 @@ namespace Modules\Product\Entities;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Entities\BaseModel;
 
-class Category extends BaseModel
+class Store extends BaseModel
 {
 
     /**
