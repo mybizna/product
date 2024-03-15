@@ -59,7 +59,7 @@ class Product extends BaseModel
         $this->fields->integer('width')->nullable()->html('text');
         $this->fields->integer('height')->nullable()->html('text');
         $this->fields->integer('weight')->nullable()->html('text');
-        $this->fields->integer('shipping_cost', 20, 2)->default(0.00)->html('amount');
+        $this->fields->decimal('shipping_cost', 20, 2)->default(0.00)->html('amount');
         $this->fields->decimal('cost_price', 20, 2)->default(0.00)->html('amount');
         $this->fields->decimal('sale_price', 20, 2)->default(0.00)->html('amount');
     }
