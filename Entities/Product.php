@@ -51,7 +51,7 @@ class Product extends BaseModel
         $this->fields->integer('description')->nullable()->html('editor');
         $this->fields->integer('category_id')->nullable()->html('recordselect')->relation(['product', 'category']);
         $this->fields->integer('type_id')->nullable()->html('recordselect')->relation(['product', 'type']);
-        $this->fields->integer('vendor')->nullable()->html('recordselect')->relation(['product', 'vendor']);
+        $this->fields->integer('vendor')->nullable()->html('recordselect')->relation(['partner']);
         $this->fields->integer('image')->nullable()->html('image');
         $this->fields->integer('gallery')->nullable()->html('gallery');
         $this->fields->integer('tags')->nullable()->html('tags');
