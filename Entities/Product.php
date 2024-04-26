@@ -78,12 +78,12 @@ class Product extends BaseModel
 
         $structure['form'] = [
             ['label' => 'Product Name', 'class' => 'col-span-full', 'fields' => ['name']],
-            ['label' => 'Product Detail', 'class' => 'col-span-full md:col-span-6ull md:col-span-6ull  md:col-span-6 md:pr-2', 'fields' => ['type_id', 'category_id']],
-            ['label' => 'Other Product Setting ', 'class' => 'col-span-full md:col-span-6ull  md:col-span-6 md:pr-2', 'fields' => ['vendor', 'cost_price', 'sale_price']],
-            ['label' => 'Product Name', 'class' => 'col-span-full', 'fields' => ['image', 'gallery']],
-            ['label' => 'Product Name', 'class' => 'col-span-full', 'fields' => ['tags', 'sku']],
-            ['label' => 'Product Name', 'class' => 'col-span-full', 'fields' => ['description']],
-            ['label' => 'Product Name', 'class' => 'col-span-full', 'fields' => ['width', 'height', 'weight', 'shipping_cost']],
+            ['label' => 'Product Price', 'class' => 'col-span-full  md:col-span-8 md:pr-2', 'fields' => ['type_id', 'category_id','sku']],
+            ['label' => 'Other Product Setting ', 'class' => 'col-span-full md:col-span-4 md:pr-2', 'fields' => ['vendor', 'cost_price', 'sale_price', 'shipping_cost']],
+            ['label' => 'Product Name', 'class' => 'col-span-full md:col-span-8 ', 'fields' => ['gallery']],
+            ['label' => 'Product Name', 'class' => 'col-span-full md:col-span-4', 'fields' => ['tags', 'image', ]],
+            ['label' => 'Product Name', 'class' => 'col-span-full md:col-span-8', 'fields' => ['description']],
+            ['label' => 'Product Name', 'class' => 'col-span-full md:col-span-4', 'fields' => ['width', 'height', 'weight']],
             ['label' => '', 'class' => 'col-span-full', 'tabs' => [
                 ['label' => 'Size', 'class' => 'col-span-full', 'fields' => ['size']],
                 ['label' => 'Color', 'class' => 'col-span-full', 'fields' => ['color']],
