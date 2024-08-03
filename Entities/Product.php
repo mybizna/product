@@ -16,20 +16,6 @@ class Product extends BaseModel
     protected $fillable = ['name', 'type_id', 'category_id', 'vendor', 'cost_price', 'sale_price', 'size', 'color', 'discount', 'width', 'height', 'weight', 'shipping_cost', 'sku', 'tags', 'description', 'image', 'gallery'];
 
     /**
-     * The fields that are to be render when performing relationship queries.
-     *
-     * @var array<string>
-     */
-    public $rec_names = ['name'];
-
-    /**
-     * List of tables names that are need in this model during migration.
-     *
-     * @var array<string>
-     */
-    public array $migrationDependancy = [];
-
-    /**
      * The table associated with the model.
      *
      * @var string
@@ -68,49 +54,7 @@ class Product extends BaseModel
 
     }
 
-    /**
-     * List of structure for this model.
-     */
-    public function structure($structure): array
-    {
 
-        $structure['table'] = ['name', 'sku', 'category_id', 'vendor', 'cost_price', 'sale_price', 'shipping_cost', 'size', 'color', 'discount', 'width', 'height', 'weight'];
 
-        $structure['form'] = [
-            ['label' => 'Product Name', 'class' => 'col-span-full', 'fields' => ['name']],
-            ['label' => 'Product Price', 'class' => 'col-span-full  md:col-span-8 md:pr-2', 'fields' => ['type_id', 'category_id','sku']],
-            ['label' => 'Other Product Setting ', 'class' => 'col-span-full md:col-span-4 md:pr-2', 'fields' => ['vendor', 'cost_price', 'sale_price', 'shipping_cost']],
-            ['label' => 'Product Name', 'class' => 'col-span-full md:col-span-8 ', 'fields' => ['gallery']],
-            ['label' => 'Product Name', 'class' => 'col-span-full md:col-span-4', 'fields' => ['tags', 'image', ]],
-            ['label' => 'Product Name', 'class' => 'col-span-full md:col-span-8', 'fields' => ['description']],
-            ['label' => 'Product Name', 'class' => 'col-span-full md:col-span-4', 'fields' => ['width', 'height', 'weight']],
-            ['label' => '', 'class' => 'col-span-full', 'tabs' => [
-                ['label' => 'Size', 'class' => 'col-span-full', 'fields' => ['size']],
-                ['label' => 'Color', 'class' => 'col-span-full', 'fields' => ['color']],
-            ]],
-            ['label' => '', 'class' => 'col-span-full', 'tabs' => [
-                ['label' => 'Discount', 'class' => 'col-span-full', 'fields' => ['discount']],
-            ]],
-        ];
 
-        $structure['filter'] = ['name', 'type_id', 'category_id', 'vendor', 'cost_price', 'sale_price'];
-
-        return $structure;
-    }
-
-    /**
-     * Define rights for this model.
-     *
-     * @return array
-     */
-    public function rights(): array
-    {
-        $rights = parent::rights();
-
-        $rights['staff'] = ['view' => true];
-        $rights['registered'] = ['view' => true];
-        $rights['guest'] = [];
-
-        return $rights;
-    }
 }
