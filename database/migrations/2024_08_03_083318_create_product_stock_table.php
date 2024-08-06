@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('product_stock', function (Blueprint $table) {
             $table->id();
-            
+
+            $table->string('note')->nullable();
+            $table->integer('product_id')->nullable();
+            $table->integer('store_id')->nullable();
+            $table->integer('stock_in')->nullable();
+            $table->integer('stock_out')->nullable();
+
             $table->timestamps();
         });
     }
