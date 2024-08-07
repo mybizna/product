@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('note')->nullable();
-            $table->integer('product_id')->nullable();
-            $table->integer('store_id')->nullable();
+            $table->foreignId('product_id')->nullable();
+            $table->foreignId('store_id')->nullable();
             $table->integer('stock_in')->nullable();
             $table->integer('stock_out')->nullable();
 
