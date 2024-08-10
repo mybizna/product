@@ -5,7 +5,7 @@ namespace Modules\Product\Entities;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Entities\BaseModel;
 
-class Category extends BaseModel
+class Store extends BaseModel
 {
 
     /**
@@ -13,14 +13,14 @@ class Category extends BaseModel
      *
      * @var array<string>
      */
-    protected $fillable = ['name', 'parent_id'];
+    protected $fillable = ['name', 'branch_id'];
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = "product_category";
+    protected $table = "product_store";
 
 
 
