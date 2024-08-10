@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name')->nullable();
-            $table->foreignId('parent')->nullable();
+            $table->foreignId('parent')->constrained('product_category')->onDelete('cascade')->nullable()->index('parent');
 
             $table->timestamps();
         });

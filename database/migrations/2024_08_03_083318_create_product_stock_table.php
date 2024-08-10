@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('note')->nullable();
-            $table->foreignId('product_id')->nullable();
-            $table->foreignId('store_id')->nullable();
+            $table->foreignId('product_id')->constrained('product_product')->onDelete('cascade')->nullable()->index('product_id');
+            $table->foreignId('store_id')->constrained('product_store')->onDelete('cascade')->nullable()->index('store_id');
             $table->integer('stock_in')->nullable();
             $table->integer('stock_out')->nullable();
 

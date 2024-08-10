@@ -16,16 +16,16 @@ return new class extends Migration
 
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->foreignId('category_id')->nullable();
-            $table->foreignId('type_id')->nullable();
-            $table->foreignId('vendor')->nullable();
+            $table->foreignId('category_id')->constrained('product_category')->onDelete('cascade')->nullable()->index('category_id');
+            $table->foreignId('type_id')->constrained('product_type')->onDelete('cascade')->nullable()->index('type_id');
+            $table->bigInteger('vendor')->nullable();
             $table->string('image')->nullable();
             $table->string('gallery')->nullable();
             $table->string('tags')->nullable();
             $table->string('sku')->nullable();
-            $table->foreignId('discount')->nullable();
-            $table->foreignId('size')->nullable();
-            $table->foreignId('color')->nullable();
+            $table->bigInteger('discount')->nullable();
+            $table->bigInteger('size')->nullable();
+            $table->bigInteger('color')->nullable();
             $table->string('width')->nullable();
             $table->string('height')->nullable();
             $table->string('weight')->nullable();
