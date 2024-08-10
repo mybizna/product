@@ -1,9 +1,8 @@
 <?php
 
-namespace Modules\Product\Entities;
+namespace Modules\Product\Models;
 
-use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Entities\BaseModel;
+use Modules\Base\Models\BaseModel;
 
 class Category extends BaseModel
 {
@@ -21,8 +20,5 @@ class Category extends BaseModel
      * @var string
      */
     protected $table = "product_category";
-
-
-
 
 }

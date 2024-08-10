@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Product\Entities;
+namespace Modules\Product\Models;
 
-use Modules\Base\Entities\BaseModel;
+use Modules\Base\Models\BaseModel;
 
 class Product extends BaseModel
 {
