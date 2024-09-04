@@ -2,9 +2,6 @@
 
 namespace Modules\Product\Filament\Resources;
 
-use Modules\Product\Filament\Resources\CategoryResource\Pages;
-use Modules\Product\Filament\Resources\CategoryResource\RelationManagers;
-use Modules\Product\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,10 +9,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Product\Filament\Resources\CategoryResource\Pages;
+use Modules\Product\Models\Category;
 
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
+
+    protected static ?string $slug = 'product/category';
+
+    protected static ?string $navigationGroup = 'Product';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
