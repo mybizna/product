@@ -3,6 +3,8 @@
 namespace Modules\Product\Models;
 
 use Modules\Base\Models\BaseModel;
+use Modules\Product\Models\Product;
+use Modules\Product\Models\Store;
 
 class Stock extends BaseModel
 {
@@ -19,5 +21,23 @@ class Stock extends BaseModel
      * @var string
      */
     protected $table = "product_stock";
+
+    /**
+     * Add relationship to Product
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    /**
+     * Add relationship to Store
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
 
 }

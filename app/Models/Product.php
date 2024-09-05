@@ -3,6 +3,8 @@
 namespace Modules\Product\Models;
 
 use Modules\Base\Models\BaseModel;
+use Modules\Product\Models\Category;
+use Modules\Product\Models\Type;
 
 class Product extends BaseModel
 {
@@ -20,5 +22,23 @@ class Product extends BaseModel
      * @var string
      */
     protected $table = "product";
+
+    /**
+     * Add relationship to Category
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Add relationship to Type
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 
 }
