@@ -21,7 +21,7 @@ class Product extends BaseModel
      *
      * @var string
      */
-    protected $table = "product";
+    protected $table = "product_product";
 
     /**
      * Add relationship to Category
