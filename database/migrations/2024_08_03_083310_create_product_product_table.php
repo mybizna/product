@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->foreignId('category_id')->constrained('product_category')->onDelete('cascade')->nullable()->index('product_product_category_id');
-            $table->foreignId('type_id')->constrained('product_type')->onDelete('cascade')->nullable()->index('product_product_type_id');
+            $table->foreignId('category_id')->nullable()->constrained('product_category')->onDelete('set null');
+            $table->foreignId('type_id')->nullable()->constrained('product_type')->onDelete('set null');
             $table->bigInteger('vendor')->nullable();
             $table->string('image')->nullable();
             $table->string('gallery')->nullable();
@@ -33,7 +33,12 @@ return new class extends Migration
             $table->decimal('cost_price', 20, 2)->default(0.00);
             $table->decimal('sale_price', 20, 2)->default(0.00);
 
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

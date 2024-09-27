@@ -15,12 +15,17 @@ return new class extends Migration
             $table->id();
 
             $table->string('note')->nullable();
-            $table->foreignId('product_id')->constrained('product_product')->onDelete('cascade')->nullable()->index('product_stock_product_id');
-            $table->foreignId('store_id')->constrained('product_store')->onDelete('cascade')->nullable()->index('product_stock_store_id');
+            $table->foreignId('product_id')->nullable()->constrained('product_product')->onDelete('set null');
+            $table->foreignId('store_id')->nullable()->constrained('product_store')->onDelete('set null');
             $table->integer('stock_in')->nullable();
             $table->integer('stock_out')->nullable();
 
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
