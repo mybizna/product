@@ -5,6 +5,8 @@ namespace Modules\Product\Models;
 use Modules\Base\Models\BaseModel;
 use Modules\Product\Models\Product;
 use Modules\Product\Models\Store;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Stock extends BaseModel
 {
@@ -26,7 +28,7 @@ class Stock extends BaseModel
      * Add relationship to Product
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
@@ -35,9 +37,20 @@ class Stock extends BaseModel
      * Add relationship to Store
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function store()
+    public function store(): BelongsTo
     {
         return $this->belongsTo(Store::class);
     }
 
+
+    public function migration(Blueprint $table): void
+    {
+        $table->id();
+
+        $table->string('note')->nullable();
+        $table->foreignId('product_id')->nullable()->constrained(table: 'product_product')->onDelete('set null');
+        $table->foreignId('store_id')->nullable()->constrained(table: 'product_store')->onDelete('set null');
+        $table->integer('stock_in')->nullable();
+        $table->integer('stock_out')->nullable();
+    }
 }

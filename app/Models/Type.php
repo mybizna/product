@@ -3,6 +3,7 @@
 namespace Modules\Product\Models;
 
 use Modules\Base\Models\BaseModel;
+use Illuminate\Database\Schema\Blueprint;
 
 class Type extends BaseModel
 {
@@ -20,4 +21,13 @@ class Type extends BaseModel
      */
     protected $table = "product_type";
 
+
+    public function migration(Blueprint $table): void
+    {
+        $table->id();
+
+        $table->string('name')->nullable();
+        $table->string('slug')->nullable();
+
+    }
 }

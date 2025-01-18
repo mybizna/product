@@ -4,6 +4,7 @@ namespace Modules\Product\Models;
 
 use Modules\Base\Models\BaseModel;
 use Modules\Core\Models\Branch;
+use Illuminate\Database\Schema\Blueprint;
 
 class Store extends BaseModel
 {
@@ -26,9 +27,18 @@ class Store extends BaseModel
      * Add relationship to Branch
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function branch()
+    public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class);
     }
 
+
+    public function migration(Blueprint $table): void
+    {
+        $table->id();
+
+        $table->string('name')->nullable();
+        $table->foreignId('branch_id')->nullable()->constrained(table: 'core_branch')->onDelete('set null');
+
+    }
 }
