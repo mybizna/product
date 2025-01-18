@@ -5,6 +5,7 @@ namespace Modules\Product\Models;
 use Modules\Account\Models\Payment;
 use Modules\Base\Models\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Category extends BaseModel
 {
@@ -36,7 +37,6 @@ class Category extends BaseModel
 
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
         $table->string('name')->nullable();
         $table->foreignId('parent_id')->nullable()->constrained(table: 'product_category')->onDelete('set null');

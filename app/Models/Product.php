@@ -1,15 +1,24 @@
 <?php
-
 namespace Modules\Product\Models;
 
+use Base\Casts\Money;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Models\BaseModel;
 use Modules\Product\Models\Category;
 use Modules\Product\Models\Type;
-use Illuminate\Database\Schema\Blueprint;
 
 class Product extends BaseModel
 {
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'total' => Money::class, // Use the custom MoneyCast
+    ];
     /**
      * The fields that can be filled
      *
@@ -42,10 +51,8 @@ class Product extends BaseModel
         return $this->belongsTo(Type::class);
     }
 
-
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
         $table->string('name')->nullable();
         $table->text('description')->nullable();
@@ -62,9 +69,10 @@ class Product extends BaseModel
         $table->string('width')->nullable();
         $table->string('height')->nullable();
         $table->string('weight')->nullable();
-        $table->decimal('shipping_cost', 20, 2)->default(0.00);
-        $table->decimal('cost_price', 20, 2)->default(0.00);
-        $table->decimal('sale_price', 20, 2)->default(0.00);
+        $table->integer('shipping_cost')->default(0);
+        $table->integer('cost_price')->default(0);
+        $table->integer('sale_price')->default(0);
+        $table->string('currency')->default('USD');
 
     }
 }

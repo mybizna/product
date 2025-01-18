@@ -45,7 +45,6 @@ class Stock extends BaseModel
 
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
         $table->string('note')->nullable();
         $table->foreignId('product_id')->nullable()->constrained(table: 'product_product')->onDelete('set null');
