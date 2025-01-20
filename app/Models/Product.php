@@ -56,8 +56,8 @@ class Product extends BaseModel
 
         $table->string('name')->nullable();
         $table->text('description')->nullable();
-        $table->foreignId('category_id')->nullable()->constrained(table: 'product_category')->onDelete('set null');
-        $table->foreignId('type_id')->nullable()->constrained(table: 'product_type')->onDelete('set null');
+        $table->unsignedBigInteger('category_id')->nullable();
+        $table->unsignedBigInteger('type_id')->nullable();
         $table->bigInteger('vendor')->nullable();
         $table->string('image')->nullable();
         $table->string('gallery')->nullable();
@@ -74,5 +74,11 @@ class Product extends BaseModel
         $table->integer('sale_price')->default(0);
         $table->string('currency')->default('USD');
 
+    }
+
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('category_id')->references('id')->on('product_category')->onDelete('set null');
+        $table->foreign('type_id')->references('id')->on('product_type')->onDelete('set null');
     }
 }

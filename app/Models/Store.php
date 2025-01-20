@@ -1,11 +1,10 @@
 <?php
-
 namespace Modules\Product\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Models\BaseModel;
 use Modules\Core\Models\Branch;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Store extends BaseModel
 {
@@ -33,12 +32,15 @@ class Store extends BaseModel
         return $this->belongsTo(Branch::class);
     }
 
-
     public function migration(Blueprint $table): void
     {
 
         $table->string('name')->nullable();
-        $table->foreignId('branch_id')->nullable()->constrained(table: 'core_branch')->onDelete('set null');
+        $table->unsignedBigInteger('branch_id')->nullable();
+    }
 
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('branch_id')->references('id')->on('core_branch')->onDelete('set null');
     }
 }

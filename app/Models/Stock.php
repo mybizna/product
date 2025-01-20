@@ -47,9 +47,15 @@ class Stock extends BaseModel
     {
 
         $table->string('note')->nullable();
-        $table->foreignId('product_id')->nullable()->constrained(table: 'product_product')->onDelete('set null');
-        $table->foreignId('store_id')->nullable()->constrained(table: 'product_store')->onDelete('set null');
+        $table->unsignedBigInteger('product_id')->nullable();
+        $table->unsignedBigInteger('store_id')->nullable();
         $table->integer('stock_in')->nullable();
         $table->integer('stock_out')->nullable();
+    }
+
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('product_id')->references('id')->on('product_product')->onDelete('set null');
+        $table->foreign('store_id')->references('id')->on('product_store')->onDelete('set null');
     }
 }

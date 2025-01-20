@@ -1,11 +1,10 @@
 <?php
-
 namespace Modules\Product\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Account\Models\Payment;
 use Modules\Base\Models\BaseModel;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Category extends BaseModel
 {
@@ -34,12 +33,17 @@ class Category extends BaseModel
         return $this->belongsTo(Payment::class);
     }
 
-
     public function migration(Blueprint $table): void
     {
 
         $table->string('name')->nullable();
-        $table->foreignId('parent_id')->nullable()->constrained(table: 'product_category')->onDelete('set null');
+        $table->unsignedBigInteger('parent_id')->nullable();
 
     }
+
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('parent_id')->references('id')->on('product_category')->onDelete('set null');
+    }
+
 }
